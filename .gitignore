@@ -41,6 +41,7 @@ ScaffoldingReadMe.txt
 *~
 CodeCoverage/
 authors.txt
+venv/
 
 # MSBuild Binary and Structured Log
 *.binlog

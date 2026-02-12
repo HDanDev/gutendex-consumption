@@ -8,6 +8,8 @@ class Program
     {
         try
         {
+            using var codetimer = new CodeTimer("Whole Program");
+
             var client = new GutendexClient();
             var aggregator = new AuthorAggregator(client);
             var authors = await aggregator.GetAuthorsAsync(5);

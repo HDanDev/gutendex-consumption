@@ -1,6 +1,10 @@
 import requests
+import time
 
 def main():
+    # Start timing
+    start_time = time.perf_counter()
+
     url = "https://gutendex.com/books/"
     authors = set()
 
@@ -32,8 +36,12 @@ def main():
         for author in authors:
             f.write(author + "\n")
 
-    print(f"Completed! {len(authors)} authors were written in {file_path}")
+    # Stop timing
+    end_time = time.perf_counter()
+    elapsed = end_time - start_time
 
+    print(f"Completed! {len(authors)} authors were written in {file_path}")
+    print(f"Elapsed time: {elapsed:.2f} seconds")
 
 if __name__ == "__main__":
     main()

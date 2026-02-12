@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
 using System.Text.Json;
@@ -9,6 +10,9 @@ class Program
 {
     static async Task Main(string[] args)
     {
+        // Start timing
+        var stopwatch = Stopwatch.StartNew();
+
         string url = "https://gutendex.com/books/";
         HttpClient client = new();
 
@@ -59,6 +63,10 @@ class Program
         string filePath = "authors.txt";
         await File.WriteAllLinesAsync(filePath, authors);
 
+        // Stop timing
+        stopwatch.Stop();
+
         Console.WriteLine($"Completed! {authors.Count} authors were written in {filePath}");
+        Console.WriteLine($"Elapsed time: {stopwatch.Elapsed.TotalSeconds:F2} seconds");
     }
 }

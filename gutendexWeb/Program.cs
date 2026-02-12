@@ -18,6 +18,8 @@ app.MapGet("/", () => "Gutendex Author Fetcher");
 // URL pattern : /authors?pages=[PageNbr]&sort=[letter]
 app.MapGet("/authors", async (int pages, string? sort, AuthorAggregator aggregator, FileWriter FileWriter, CancellationToken cancellationToken) =>
     {
+        using var timer = new CodeTimer("GET /authors");
+
         if (pages <= 0 || pages > 10)
             return Results.BadRequest("Pages must be between 1 and 10.");
 
